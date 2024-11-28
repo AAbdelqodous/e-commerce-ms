@@ -1,0 +1,36 @@
+spring:
+  data:
+    mongodb:
+      username: abdelqodous
+      password: abdelqodous
+      host: localhost
+      port: 27017
+      database: notification
+      authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: paymentGroup,orderGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.package: '*'
+        spring.json.type.mapping: orderConfirmation:com.abdelqodous.ecommerce.kafka.OrderConfirmation,paymentConfirmation:com.abdelqodous.ecommerce.notification.PaymentNotificationRequest
+  mail:
+    host: localhost
+    port: 1025
+    username: abdelqodous
+    password: abdelqodous
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttles:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+server:
+  port: 8040
