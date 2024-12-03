@@ -3,3 +3,10 @@ spring:
     import: optional:configserver:http://localhost:8888
   application:
     name: notification-service
+logging:
+  level:
+    root: DEBUG
+    org:
+      springframework: DEBUG
+      apache:
+        kafka: DEBUG
